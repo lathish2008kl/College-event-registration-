@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Campus Connect – College Event Registration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#home" data-nav="home">🎓 Campus Connect</a>
+  <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">☰</button>
+  <nav id="nav">
+    <button data-nav="home" class="active">Home</button>
+    <button data-nav="events">Events</button>
+    <button data-nav="register">Register</button>
+    <button data-nav="mine">My Registrations <span id="myCount" class="pill"></span></button>
+  </nav>
+</header>
+
+<main>
+  <!-- HOME -->
+  <section id="view-home" class="view active">
+    <div class="hero">
+      <h1>Your campus, your calendar.</h1>
+      <p>Welcome back! Browse what's happening this semester, grab a seat, and manage everything you've signed up for in one place.</p>
+      <div class="hero-actions">
+        <button class="btn gold" data-nav="events">Explore events</button>
+        <button class="btn ghost" data-nav="mine">My registrations</button>
+      </div>
+      <div class="stats">
+        <div><b id="statEvents">0</b><span>Events</span></div>
+        <div><b id="statRegs">0</b><span>Students registered</span></div>
+        <div><b id="statSeats">0</b><span>Seats open</span></div>
+      </div>
+    </div>
+    <h2 class="section-title">Upcoming events</h2>
+    <div class="grid" id="homeGrid"></div>
+  </section>
+
+  <!-- EVENTS -->
+  <section id="view-events" class="view">
+    <h2 class="section-title">All events</h2>
+    <div class="filters">
+      <input type="search" id="search" placeholder="🔍 Search events by name">
+      <select id="category"><option value="">All categories</option></select>
+      <input type="date" id="dateFilter" aria-label="Filter by date">
+      <button class="btn small ghost-dark" id="clearFilters">Clear</button>
+    </div>
+    <div class="grid" id="eventGrid"></div>
+  </section>
+
+  <!-- REGISTER -->
+  <section id="view-register" class="view">
+    <h2 class="section-title">Register for an event</h2>
+    <form id="regForm" class="card form" novalidate>
+      <label>Full name <input id="fName" type="text" placeholder="e.g. Priya Raman"><small class="err" data-for="fName"></small></label>
+      <label>Email address <input id="fEmail" type="email" placeholder="you@college.edu"><small class="err" data-for="fEmail"></small></label>
+      <label>College name <input id="fCollege" type="text"><small class="err" data-for="fCollege"></small></label>
+      <label>Department <input id="fDept" type="text" placeholder="e.g. Computer Science"><small class="err" data-for="fDept"></small></label>
+      <label>Event <select id="fEvent"></select><small class="err" data-for="fEvent"></small></label>
+      <button class="btn gold" type="submit">Confirm registration</button>
+    </form>
+  </section>
+
+  <!-- MY REGISTRATIONS -->
+  <section id="view-mine" class="view">
+    <h2 class="section-title">My registrations</h2>
+    <div class="filters">
+      <input type="email" id="lookupEmail" placeholder="Enter the email you registered with">
+      <button class="btn small gold" id="lookupBtn">Show my events</button>
+    </div>
+    <div class="grid" id="mineGrid"></div>
+  </section>
+</main>
+
+<dialog id="detailDialog"></dialog>
+<div id="toasts" aria-live="polite"></div>
+<footer>© Campus Connect · Built with HTML, CSS &amp; JavaScript · Data is saved in your browser</footer>
+<script src="script.js"></script>
+</body>
+</html>
